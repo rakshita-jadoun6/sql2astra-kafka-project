@@ -88,7 +88,7 @@ producer = SerializingProducer({
 
 # Load the last read timestamp from the config file
 config_data = {}
-default_timestamp = '1900-01-01 00:00:00.000000'
+default_timestamp = '1900-01-01 00:00:00.000'
 last_read_timestamp = None
 second_last_read_timestamp = None
 
@@ -141,7 +141,7 @@ if max_date is None:
     config_data['second_last_read_timestamp'] = default_timestamp
     config_data['last_read_timestamp'] = default_timestamp
 else:
-    max_date_str = max_date.strftime("%Y-%m-%d %H:%M:%S.%f")
+    max_date_str = max_date.strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
     config_data['second_last_read_timestamp'] = last_read_timestamp
     config_data['last_read_timestamp'] = max_date_str
 

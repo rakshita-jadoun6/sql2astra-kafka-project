@@ -15,5 +15,11 @@ Step 5: Now insert the records into cassandra table present between last read ti
 Step 6: Load more records into the MySQL table and run the producer again.
 Now, the producer should only pick the records added after the initial batch. These new records must be consumed automatically by the consumers from the topic. And should be inserted into the cassandra table automatically.
 
+<!-- python .\avro_data_consumer.py --group_id group1 --file_path consumer5.json -->
 
+<!-- conda activate cassandra38 -->
+<!-- cd "C:\Users\RakshitaJadoun\Desktop\Personal Use\DE\Projects-DE\Confluent-Kafka-2" -->
+<!-- python insert_json_to_cassandra.py -->
+
+<!-- python .\avro_data_producer.py -->
 

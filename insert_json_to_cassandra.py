@@ -20,7 +20,8 @@ ASTRA_PASSWORD = os.getenv('ASTRA_SECRET')
 ASTRA_KEYSPACE = os.getenv('ASTRA_KEYSPACE')
 ASTRA_TABLE = os.getenv('ASTRA_TABLE')
 
-default_timestamp = '1900-01-01 00:00:00.000000'
+default_timestamp = '1900-01-01 00:00:00.000'
+
 group_folder_pattern = re.compile(r'^group\d+$')
 
 def load_timestamps():
