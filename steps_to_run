@@ -1,0 +1,19 @@
+Step 1: Load some rows, let's say 12 records into the MySQL table.
+
+Step 2: Start 2 instances of the consumer code for Group 1 in parallel, with the offset reset set to latest.
+
+Step 3: Start 5 instances of the consumer code for Group 2 in parallel, also with the offset reset set to latest.
+
+Step 4: Run the producer code to load the data from the MySQL table into the Kafka topic.
+Now, as soon as all records are published to the topic, consumers should start in parallel to consume all records.
+Kafka has 4 partitions:
+Consumer Group 1 → 2 consumers (each consumer gets 2 partitions)
+Consumer Group 2 → 5 consumers (each consumer gets 1 partition; 1 consumer remains idle as only 4 partitions exist)
+
+Step 5: Now insert the records into cassandra table present between last read timestamp & second last read timestamp from json files.
+
+Step 6: Load more records into the MySQL table and run the producer again.
+Now, the producer should only pick the records added after the initial batch. These new records must be consumed automatically by the consumers from the topic. And should be inserted into the cassandra table automatically.
+
+
+
