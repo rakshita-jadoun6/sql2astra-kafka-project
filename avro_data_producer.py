@@ -107,7 +107,7 @@ if last_read_timestamp is None:
     second_last_read_timestamp = default_timestamp
 
 # Use the last_read_timestamp in the SQL query
-query = "SELECT * FROM {} where last_updated > '{}'".format(os.getenv('TABLE'), last_read_timestamp)
+query = "SELECT * FROM {} where last_updated > '{}'".format(os.getenv('SQL_TABLE'), last_read_timestamp)
 cursor.execute(query)
 
 # Check if there are any rows fetched
@@ -128,7 +128,7 @@ else:
 # Fetch any remaining rows to consume the result
 cursor.fetchall()
 
-query = "SELECT MAX(last_updated) FROM {}".format(os.getenv('TABLE'))
+query = "SELECT MAX(last_updated) FROM {}".format(os.getenv('SQL_TABLE'))
 cursor.execute(query)
 
 # Fetch the result
